@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define NUM_CRIANCAS 50
+#define NOTA_MIN 1
+#define NOTA_MAX 5
+
+int main() {
+    int notas[NUM_CRIANCAS];
+    int contagem[NOTA_MAX] = {0}; // Array para contar as notas de 1 a 5
+
+    // Inicializar o gerador de números aleatórios
+    srand(time(NULL));
+
+    // Gerar notas aleatórias para as 50 crianças
+    for (int i = 0; i < NUM_CRIANCAS; i++) {
+        notas[i] = (rand() % NOTA_MAX) + NOTA_MIN;
+    }
+
+    // Contar quantas vezes cada nota foi atribuída
+    for (int i = 0; i < NUM_CRIANCAS; i++) {
+        contagem[notas[i] - 1]++;
+    }
+
+    // Exibir o resultado
+    printf("Resultados da pesquisa de mercado:\n");
+    for (int i = 0; i < NOTA_MAX; i++) {
+        printf("Nota %d: %d vezes\n", i + 1, contagem[i]);
+    }
+
+    return 0;
+}
